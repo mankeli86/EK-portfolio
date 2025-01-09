@@ -1,9 +1,13 @@
 import ImageComponent from '../components/ImageComponent'
+import NavigationBar from '../components/NavigationBar'
 
 function Home() {
 
   return (
-    <ImageComponent />
+    <div>
+      <NavigationBar />
+      <ImageComponent />
+    </div>
   )
 }
 
