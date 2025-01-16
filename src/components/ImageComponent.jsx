@@ -1,9 +1,10 @@
 import reactLogo from './../assets/react.svg';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Dialog from '@mui/material/Dialog';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 const itemData = [
   {
@@ -33,12 +34,19 @@ const itemData = [
 ];
 
 export default function ImageComponent() {
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.down('md'));
+  let columns = 3;
+  if (isXs) columns = 2;
+  else if (isMd) columns = 2;
+
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <Box sx={{ width: '90vw', height: '90vh' }}>
-      <ImageList variant="masonry" cols={3} gap={8}>
+    <Box sx={{ width: '90vw', margin: '0 auto', paddingTop: 6 }}>
+      <ImageList variant="masonry" cols={columns} gap={8}>
         {itemData.map((item) => (
           <ImageListItem
             key={item.title}
@@ -56,12 +64,7 @@ export default function ImageComponent() {
           </ImageListItem>
         ))}
       </ImageList>
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        maxWidth="lg"
-        fullWidth
-      >
+      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="lg" fullWidth>
         <img
           src={selectedImage}
           alt="Enlarged"
