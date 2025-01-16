@@ -38,7 +38,7 @@ export default function ImageComponent() {
   const isXs = useMediaQuery(theme.breakpoints.down('sm'));
   const isMd = useMediaQuery(theme.breakpoints.down('md'));
   let columns = 3;
-  if (isXs) columns = 1;
+  if (isXs) columns = 2;
   else if (isMd) columns = 2;
 
   const [open, setOpen] = useState(false);
