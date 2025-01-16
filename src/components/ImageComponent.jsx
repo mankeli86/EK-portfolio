@@ -33,7 +33,7 @@ const itemData = [
   },
 ];
 
-export default function ImageComponent() {
+function ImageComponent() {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.down('sm'));
   const isMd = useMediaQuery(theme.breakpoints.down('md'));
@@ -74,3 +74,5 @@ export default function ImageComponent() {
     </Box>
   );
 }
+
+export default ImageComponent;
